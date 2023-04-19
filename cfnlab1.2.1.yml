@@ -1,0 +1,20 @@
+Resources:
+  S3BucketPolicy:
+    Type: 'AWS::IAM::ManagedPolicy'
+    Properties:
+      PolicyName: 'IAMUserS3BucketPolicy'
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Action:
+              - 's3:GetObject'
+            Resource:
+              - arn:aws:s3:::bucket-pooja-suryawanshi
+              - arn:aws:s3:::bucket-pooja-suryawanshi/*
+      Users:
+      - 'standard-stack-trialuser-151GSSBWL32H6'
+Outputs:
+  S3BPolicyARN:
+    Value: !Ref S3BucketPolicy
+    Export:
+      Name: S3BPolicyARN
